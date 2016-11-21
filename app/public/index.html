@@ -10,6 +10,8 @@
   <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+  
+          
 </head>
 <body>
     <div class="fixed-action-btn">
@@ -17,7 +19,7 @@
       <i class="large material-icons">add</i>
     </a>
     <ul>
-      <li><a class="btn-floating blue lighten-1-"><i class="material-icons">shopping_basket</i><span title="I am hovering over the text">This is the text I want to have a mousover</span></a></li>
+      <li><a class="btn-floating blue lighten-1-"><i class="material-icons">shopping_basket</i></a></li>
       <li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
     </ul>
   </div>
@@ -29,7 +31,14 @@
         <li><a href="#"><i class="fa fa-facebook-official fa-2x" aria-hidden="true"></i></a></li>
         <li><a href="#"><i class="fa fa-twitter fa-2x" aria-hidden="true"></i></a></li>
         <li><a href="#"><i class="fa fa-instagram fa-2x" aria-hidden="true"></i></a></li>
-        <li><a href="#" id="download-button" class="btn-large waves-effect waves-light yellow lighten-8">My Account</a></li>
+          <!-- Dropdown Trigger -->
+          <!--   <a class='dropdown-button btn yellow' href='#' data-activates='dropdown1'>My Account</a>
+
+            <!-- Dropdown Structure -->
+            <!-- <ul id='dropdown1' class='dropdown-content'>
+              <li><a href="#">Laundr Users</a></li>
+              <li><a href="#">Laundr Washers</a></li>
+            </ul>  -->
       </ul>
     </div>
   </nav>
@@ -43,8 +52,28 @@
           <h5 class="header col s12 light">A modern way to do our most basic chore</h5>
         </div>
         <div class="row center">
-          <a href="#" id="download-button" class="btn-large waves-effect waves-light yellow lighten-1">Sign Up!</a>
-        </div>
+          <!-- <a href="#" id="download-button" class="btn-large waves-effect waves-light yellow lighten-1">Sign Up to use Laundr!</a>
+          <a href="#" id="download-button" class="btn-large waves-effect waves-light yellow lighten-1">Sign Up to wash for Laundr!</a>  -->    
+
+          <!-- Modal Trigger -->
+            <a class="waves-effect waves-light btn" href="#modal1">Sign Up with Facebook</a>
+
+            <!-- Modal Structure -->
+            <div id="modal1" class="modal">
+              <div class="modal-content">
+                <h4 style="color:black"><i class="fa fa-facebook-square" aria-hidden="true"></i>Facebook Login</h4>
+
+                <a href="/login"><button type="button" class="btn btn-default">Authenticate to be a Laundr User</button></a>
+
+                <h12 style="color:black">  or  </h12>
+
+                <a href="/login"><button type="button" class="btn btn-default">Authenticate to be a Laundr Washer</button></a>
+              </div>
+              
+            </div>  
+
+        </div>           
+
         <br><br>
 
       </div>
@@ -75,27 +104,29 @@
         <div class="col s12 m4">
           <div class="icon-block">
             <div class="row center">
-              <h5 class="header col s12 light">How does it work?</h5>
-            </div> 
-            <h2 class="center brown-text"><i class="material-icons">group</i></h2>
-            <h5 class="center">We connect washers with people that need clean laundry</h5>
-
-            <p class="light">By creating a large network of people who are available now to get your laundry load done, we create an efficient and fast way to do life's most tedious work.</p>
-          </div>
-        </div>
-
-        <div class="col s12 m4">
-          <div class="icon-block">
-            <div class="row center">
               <h5 class="header col s12 light">How much does it cost?</h5>
             </div> 
             <h2 class="center brown-text"><i class="material-icons">credit_card</i></h2>
             <h5 class="center">Less than most laundromats!</h5>
 
-            <p class="light">PRICE LIST HERE</p>
+            <p class="light">The average load of laundry in NYC costs $3, which doesn't include fold, pickup, or dropoff services. By eliminating brick and mortar laundromats, we can save users serious dough!</p>
           </div>
         </div>
-      </div>
+      
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <div class="row center">
+              <h5 class="header col s12 light">How does it work?</h5>
+            </div> 
+            <h2 class="center brown-text"><i class="material-icons">group</i></h2>
+            <h5 class="center">We connect people that need clean laundry to washers</h5>
+
+            <p class="light">By creating a large network of people who are available now to get your laundry load done, we create an efficient and fast way to do away with life's most tedious work.</p>
+          </div>
+        </div>
+
+      </div>  
 
     </div>
   </div>
@@ -118,8 +149,8 @@
       <div class="row">
         <div class="col s12 center">
           <h3><i class="mdi-content-send brown-text"></i></h3>
-          <h4>Contact Us</h4>
-          <p class="left-align light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque id nunc nec volutpat. Etiam pellentesque tristique arcu, non consequat magna fermentum ac. Cras ut ultricies eros. Maecenas eros justo, ullamcorper a sapien id, viverra ultrices eros. Morbi sem neque, posuere et pretium eget, bibendum sollicitudin lacus. Aliquam eleifend sollicitudin diam, eu mattis nisl maximus sed. Nulla imperdiet semper molestie. Morbi massa odio, condimentum sed ipsum ac, gravida ultrices erat. Nullam eget dignissim mauris, non tristique erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p>
+          <h4>Created by New Yorkers, for New Yorkers</h4>
+          <p class="center-align light">Initially created as a demo project, Laundr has become a New York phenomenon! We "blame" our fellow New Yorkers, who like us were sick of wasting their lives on time-comsuming chores. We all know laundry day is coming up, but Laundr is here to make it as easy as ordering a pizza!</p>
         </div>
       </div>
 
@@ -142,34 +173,25 @@
     <div class="container">
       <div class="row">
         <div class="col l6 s12">
-          <h5 class="white-text">Company Bio</h5>
-          <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
+          <h5 class="white-text">Laundr Bio</h5>
+          <p class="grey-text text-lighten-4">We are a team of RCB students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
 
 
         </div>
-        <div class="col l3 s12">
-          <h5 class="white-text">Settings</h5>
-          <ul>
-            <li><a class="white-text" href="#!">Link 1</a></li>
-            <li><a class="white-text" href="#!">Link 2</a></li>
-            <li><a class="white-text" href="#!">Link 3</a></li>
-            <li><a class="white-text" href="#!">Link 4</a></li>
-          </ul>
-        </div>
-        <div class="col l3 s12">
-          <h5 class="white-text">Connect</h5>
-          <ul>
-            <li><a class="white-text" href="#!">Link 1</a></li>
-            <li><a class="white-text" href="#!">Link 2</a></li>
-            <li><a class="white-text" href="#!">Link 3</a></li>
-            <li><a class="white-text" href="#!">Link 4</a></li>
-          </ul>
-        </div>
+          <div class="col l3 s12">
+            <h5 class="white-text">Connect</h5>
+            <ul>
+              <li><a class="white-text" href="#!"><i class="fa fa-github" aria-hidden="true"></i> Diego P.</a></li>
+              <li><a class="white-text" href="#!"><i class="fa fa-github" aria-hidden="true"></i> Jorge P.</a></li>
+              <li><a class="white-text" href="#!"><i class="fa fa-github" aria-hidden="true"></i> Lawrence L.</a></li>
+              <li><a class="white-text" href="#!"><i class="fa fa-github" aria-hidden="true"></i> Siddhant S.</a></li>
+            </ul>
+          </div>
       </div>
     </div>
     <div class="footer-copyright">
       <div class="container">
-      Made by <a class="brown-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+      Made by <a class="brown-text text-lighten-3">Laundr</a>
       </div>
     </div>
   </footer>
@@ -180,5 +202,14 @@
   <script src="js/materialize.js"></script>
   <script src="js/init.js"></script>
 
+  <script type="text/javascript">$(document).ready(function(){
+      $('.modal').modal();
+  });
+
+  </script> 
+
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
   </body>
 </html>
