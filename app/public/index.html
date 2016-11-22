@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -10,8 +10,35 @@
   <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+ <link href="https://fonts.googleapis.com/css?family=Handlee" rel="stylesheet">
+ <link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
+
+  <style>
+  body{
+    font-family: 'Handlee', cursive;
+    
+
+  }
+  #modal1{
+   background-color:lightblue;
   
-          
+  }
+  #mainCointainer{
+    margin-top:5%;
+    background:rgba(0,100,0, 0.30);
+    border-radius:30px;
+  }
+  #logo-container{
+    color:teal;
+    font-family: 'Poiret One', cursive;
+  }
+  #modalLaunder,#modalWasher{
+    font-family: 'Poiret One', cursive;
+  }
+ .colorNav{
+  background-color: rgba(75, 73, 80, 0.25);
+ }
+  </style>      
 </head>
 <body>
     <div class="fixed-action-btn">
@@ -24,7 +51,7 @@
     </ul>
   </div>
 
-  <nav class="white" role="navigation">
+  <nav class="colorNav" role="navigation">
     <div class="nav-wrapper container">
       <a id="logo-container" href="#" class="brand-logo">Laundr</a>
       <ul class="right hide-on-med-and-down">
@@ -45,9 +72,9 @@
 
   <div id="index-banner" class="parallax-container light">
     <div class="section no-pad-bot">
-      <div class="container">
+      <div class="container" id="mainCointainer">
         <br><br>
-        <h1 class="header center teal-text text-lighten-2">Laundr</h1>
+        <h1 class="header center white-text text-lighten-2">Laundr</h1>
         <div class="row center">
           <h5 class="header col s12 light">A modern way to do our most basic chore</h5>
         </div>
@@ -63,11 +90,11 @@
               <div class="modal-content">
                 <h4 style="color:black"><i class="fa fa-facebook-square" aria-hidden="true"></i>Facebook Login</h4>
 
-                <a href="/login"><button type="button" class="btn btn-default">Authenticate to be a Laundr User</button></a>
+                <a href="user.html"><button type="button" class="btn btn-default" id="modalLaunder">Be a Laundr User</button></a>
 
                 <h12 style="color:black">  or  </h12>
 
-                <a href="/login"><button type="button" class="btn btn-default">Authenticate to be a Laundr Washer</button></a>
+                <a href="washer.html"><button type="button" class="btn btn-default" id="modalWasher">Be a Laundr Washer</button></a>
               </div>
               
             </div>  
@@ -169,7 +196,7 @@
     <div class="parallax"><img src="background3.jpg" alt="Unsplashed background img 3"></div>
   </div>
 
-  <footer class="page-footer teal">
+  <footer class="page-footer black">
     <div class="container">
       <div class="row">
         <div class="col l6 s12">
@@ -211,5 +238,11 @@
 
   <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+   <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.css">
+
+
+          
+
   </body>
 </html>
