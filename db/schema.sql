@@ -7,9 +7,10 @@ CREATE TABLE washers
 	id int NOT NULL AUTO_INCREMENT,
 	washer_name varchar(70) NOT NULL,
 	washer_email varchar(255) NOT NULL,
+	washer_address varchar(255) NOT NULL,
 	phone_number varchar(20) NOT NULL,
 	url varchar(2083) 
-	member BOOLEAN DEFAULT false,
+	member BOOLEAN DEFAULT TRUE,
 	date DATETIME NOT NULL,
 	PRIMARY KEY (id)
 );
@@ -22,8 +23,7 @@ CREATE TABLE clients
 	client_address varchar(255) NOT NULL,
 	phone_number varchar(20) NOT NULL,
 	url varchar(2083) NOT NULL,
-	amount_lbs DECIMAL(10,2) NOT NULL,
-	member BOOLEAN DEFAULT false,
+	member BOOLEAN DEFAULT TRUE,
 	date DATETIME NOT NULL,
 	PRIMARY KEY (id)
 );
