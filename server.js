@@ -10,10 +10,10 @@ var mysql = require("mysql");
 // Connection Info for MySQL DB
 var connection = mysql.createConnection({
   port: 3306,
-  host: "localhost",
-  user: "root",
-  password: "winsy125",
-  database: "laundr_users"
+  host: "m7wltxurw8d2n21q.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+  user: "qf7ud1pka3i4qtdy",
+  password: "",
+  database: ""
 });
 
 // Connect to MySQL DB
@@ -28,7 +28,7 @@ connection.connect(function(err) {
 // Passport / Facebook Authentication Information
 passport.use(new Strategy({
   clientID: process.env.CLIENT_ID || "988726484566421",
-  clientSecret: process.env.CLIENT_SECRET || "1c5d8736244d4ecadc89fe7c0384eff0",
+  clientSecret: process.env.CLIENT_SECRET || "088c94113e7b633bebdb6947ad2d36ae",
   callbackURL: "http://localhost:3002/login/facebook/return"
 },
   function(accessToken, refreshToken, profile, cb) {
@@ -80,23 +80,26 @@ app.use(passport.session());
 
 // View the Main Page
 app.get("/", function(req, res) {
-  res.sendFile(path.join(__dirname, "app/public/index.html"));
+  res.sendFile(path.join(__dirname, "index.html"));
 });
 
 // View the Login Page
 app.get("/login", function(req, res) {
-  res.sendFile(path.join(__dirname, "app/public/login.html"));
+  res.sendFile(path.join(__dirname, "login.html"));
 });
 
 // Initiate the Facebook Authentication
-app.get("/login/facebook", passport.authenticate("facebook"));
+app.get("/user", passport.authenticate("facebook"));
+
+// Initiate the Facebook Authentication
+app.get("/washer", passport.authenticate("facebook"));
 
 // When Facebook is done, it uses the below route to determine where to go
 app.get("/login/facebook/return",
-  passport.authenticate("facebook", { failureRedirect: "/login" }),
+  passport.authenticate("facebook", { failureRedirect: "/user" }),
 
   function(req, res) {
-    res.redirect("/inbox");
+    res.redirect("/");
   });
 
 // This page is available for viewing a hello message
