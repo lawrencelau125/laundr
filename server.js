@@ -10,8 +10,8 @@ app.use(bodyParser.text());
 app.use(bodyParser.json({type:'application/vnd.api+json'}));
 
 // Possible Routes for HTML and API
-require("./laundr/app/api-routes.js")(app)
-require("./laundr/app/html-routes.js")(app)
+require("./laundr/app/routes/api-routes.js")(app)
+require("./laundr/app/routes/html-routes.js")(app)
 
-var port = process.env.PORT || 3003;
-app.listen(port);
+var PORT = process.env.PORT || 3003;
+app.listen(PORT);
