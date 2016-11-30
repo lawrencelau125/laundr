@@ -1,7 +1,4 @@
 
-   
-  
-
 
   <!DOCTYPE html>
   <html>
@@ -46,19 +43,54 @@
           margin-top:20px;
           border-radius:40px;
         }
-       
+       h4{
+          text-align: center;
+          color:white;
+        }
+        #mapModal{
+          background-image: url("https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcS6s8nUav9GWLRgmLv89W2u3IVeZx75Z8HnDM39X_Mujhm9kvnFyQ");
+           border-radius:30px;
+        }
+        #modal-2{
+          text-align: center;
+        }
+        #ze{
+          margin-right:750px;
+           border-radius:30px;
+        }
+        #modal1{
+          border-radius:10%;
+        }
 
        </style>      
     </head>
 
     <body>
+    <div class="container">
+       
+
+
+    
+   <!-- Modal Structure -->
+  <div id="modal1" class="modal">
+    <div class="modal-content"id="mapModal">
+      <h4>Laundr</h4>
+        
+     <!--MAP---------------- -->
+    <iframe width="750" height="480"; frameborder="0" style="border:20px" src="https://www.google.com/maps/embed/v1/search?q=laundromat&key=AIzaSyA636FYkZVBolKoiJ3DfuJ1MGt3OrcvuBE" allowfullscreen></iframe>
+
+    </div>
+  </div>
+
+  </p>
+    </div>
 
     <div class="container">
 
         <div class="jumbotron">
             <h1 class="text-center">Laundr User</h1>
             <hr>
-            <h4 class="text-center">Awesome! So you are requesting your chlothes to be washed!!</h4>
+            <h4 class="text-center">Awesome! So you are requesting your clothes to be washed!!</h4>
             <hr>
             <h5>Please fill out the form below. Thank You!</h5>
             <br>
@@ -118,6 +150,7 @@
           <input id="reserve_picture" type="tel" class="validate">
           <label for="icon_telephone">Picture</label>
          </div>
+
          <button class="btn waves-effect waves-light submit" type="submit" name="action">Submit
     <i class="material-icons right">send</i>
   </button>
@@ -126,47 +159,83 @@
     </form>
   </div>
 </div>
+
+                         <!-- Modal Trigger -->
+
+  <a class="waves-effect waves-light btn" href="#modal1" id="modal-2">Press for Nearby Laundramats</a>
+
 </div>
- <!--    ------------------------------------row1--------------------------------              -->
+ <!--    ------------------------------------end--------------------------------              -->
       <!--Import jQuery before materialize.js-->
       <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-      <script type="text/javascript" src="js/materialize.min.js"></script>
+      <script type="text/javascript" src="js/materialize.js"></script>
     </body>
   </html>
 <script type="text/javascript">
+
+ function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 8,
+          center: {lat: -34.397, lng: 150.644}
+        });
+        var geocoder = new google.maps.Geocoder();
+
+        document.getElementById('submit').addEventListener('click', function() {
+          geocodeAddress(geocoder, map);
+        });
+      }
+
+      function geocodeAddress(geocoder, resultsMap) {
+        var address = document.getElementById('address').value;
+        geocoder.geocode({'address': address}, function(results, status) {
+          if (status === 'OK') {
+            resultsMap.setCenter(results[0].geometry.location);
+            var marker = new google.maps.Marker({
+              map: resultsMap,
+              position: results[0].geometry.location
+            });
+          } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+          }
+        });
+      }
 
     // In this code below we create the Front-end Javascript which "POSTS" our form data to our express server.
     // In essence, when the user hits submit, jQuery grabs all of the fields then sends a post request to our api
     // Our api recognizes the route (/api/tables)... and then runs the associated code (found in api-routes.js).
     // In this case the associated code "saves" the data to the table-data.js file or waitinglist-data.js file
 
+    
     $(".submit").on("click", function(){
 
-      alert("hello")
 
-        // // Here we grab the form elements
-        // var laundrWahser = {
-        //     customerName: $('#reserve_name').val().trim(),
-        //     phoneNumber: $('#reserve_phone').val().trim(),
-        //     customerEmail: $('#reserve_email').val().trim(),
-        //     customerAddress: $('#reserve_address').val().trim(),
-        //     customerWeight: $('#reserve_weight').val().trim(),
-        //     customerPicture: $('#reserve_picture').val().trim()
-        // };
-        // alert("Awesome! we will notify the client.\n\nThankyou!")
-        // console.log(laundrWahser);
+      //alert("hello")
 
+        // Here we grab the form elements
+        var laundrWasher = {
+            customerName: $('#reserve_name').val().trim(),
+            phoneNumber: $('#reserve_phone').val().trim(),
+            customerEmail: $('#reserve_email').val().trim(),
+            customerAddress: $('#reserve_address').val().trim(),
+            customerWeight: $('#reserve_weight').val().trim(),
+            customerPicture: $('#reserve_picture').val().trim()
+        };
+       
 
-        // var currentURL = window.location.origin;
+        var currentURL = window.location.origin;
 
-        // $.post(currentURL + "/api/tables", laundrWahser,
-        // function(data){
+        $.post(currentURL + "/api/tables", laundrWasher,
+        function(data){
 
-        //     alert("Awesome! we will notify a Washer.\n\nThankyou! ")
+           
+               var $toastContent = $('<span>Awesome! We have received your info notify.\n\nThankyou!</span>');
+                Materialize.toast($toastContent, 5000);
 
-
-        // });
+        });
 
 return false;
 
 });
+
+    
+</script>

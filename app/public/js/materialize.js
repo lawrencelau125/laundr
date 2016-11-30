@@ -3,6 +3,13 @@
  * Copyright 2014-2015 Materialize
  * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
  */
+ $(document).ready(function(){
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    
+    $('.modal').modal();
+  });
+
+
 // Check for jQuery.
 if (typeof(jQuery) === 'undefined') {
   var jQuery;

@@ -152,16 +152,15 @@
             customerWeight: $('#reserve_weight').val().trim(),
             customerPicture: $('#reserve_picture').val().trim()
         };
-        alert("Awesome! we will notify the client.\n\nThankyou!")
-        console.log(laundrWahser);
-
+       
 
         var currentURL = window.location.origin;
 
         $.post(currentURL + "/api/tables", laundrWahser,
         function(data){
 
-            alert("Awesome! we will notify a Washer.\n\nThankyou! ")
+             var $toastContent = $('<span>Awesome! We have received your info.\n\nThankyou!</span>');
+                Materialize.toast($toastContent, 5000);
 
 
         });
@@ -170,17 +169,7 @@ return false;
 
 });
 
+    
 </script>
-<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="js/materialize.js"></script>
-  <script src="js/init.js"></script>
-
-  <script type="text/javascript">$(document).ready(function(){
-      $('.modal').modal();
-  });
-
-  </script> 
-
-
 
 
