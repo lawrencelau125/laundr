@@ -1,11 +1,10 @@
-// Various Dependencies
-var express = require("express");
-var passport = require("passport");
-var Strategy = require("passport-facebook").Strategy;
-var path = require("path");
+var bodyParser = require('body-parser');
 
-// Incorporate MySQL
-var mysql = require("mysql");
+var express = require('express');
+
+
+var path = require('path');
+
 
 // Connection Info for MySQL DB
 var connection = mysql.createConnection({
@@ -62,8 +61,14 @@ passport.deserializeUser(function(obj, cb) {
 
 
 // Create a new express application.
-var app = express();
 
+var app = express();
+ 
+
+
+ 
+var PORT = process.env.PORT || 8080;
+=======
 // Incorporated a variety of Express packages.
 app.use(require("morgan")("combined"));
 app.use(require("cookie-parser")());
@@ -134,18 +139,22 @@ app.get("/api/inbox",
             if(err) throw err
         })
 
-      }
 
-      res.json(data);
+app.use(express.static('app/public'));
 
-    });
+// parse application/x-www-form-urlencoded 
+app.use(bodyParser.urlencoded({ extended: false }));
+ 
+// parse application/json 
+app.use(bodyParser.json());
 
-  });
 
+//require('./app/routing/api-routes.js')(app); 
 
-// Starts the server to begin listening
-// =============================================================
-var PORT = process.env.PORT || 3002;
-app.listen(PORT, function() {
-  console.log("App listening on PORT " + PORT);
+require ('./app/routing/api-routes.js')(app);
+require('./app/routing/html-routes.js')(app);
+
+ 
+app.listen(PORT,function(){
+  console.log("Laundr App is running on Port: "+PORT);
 });
