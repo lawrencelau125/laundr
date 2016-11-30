@@ -2,10 +2,10 @@ var bodyParser = require('body-parser');
 
 var express = require('express');
 
-<<<<<<< HEAD
+
 var path = require('path');
 
-=======
+
 // Connection Info for MySQL DB
 var connection = mysql.createConnection({
   port: 3306,
@@ -61,11 +61,11 @@ passport.deserializeUser(function(obj, cb) {
 
 
 // Create a new express application.
->>>>>>> master
+
 var app = express();
  
 
-<<<<<<< HEAD
+
  
 var PORT = process.env.PORT || 8080;
 =======
@@ -138,7 +138,7 @@ app.get("/api/inbox",
 
             if(err) throw err
         })
->>>>>>> master
+
 
 app.use(express.static('app/public'));
 
