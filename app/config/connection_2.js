@@ -1,18 +1,19 @@
-var bodyParser = require('body-parser');
+// Various Dependencies
+var express = require("express");
+var passport = require("passport");
+var Strategy = require("passport-facebook").Strategy;
+var path = require("path");
 
-var express = require('express');
+// Incorporate MySQL
+var mysql = require("mysql");
 
-<<<<<<< HEAD
-var path = require('path');
-
-=======
 // Connection Info for MySQL DB
 var connection = mysql.createConnection({
   port: 3306,
-  host: "m7wltxurw8d2n21q.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
-  user: "qf7ud1pka3i4qtdy",
-  password: "",
-  database: ""
+  host: "localhost",
+  user: "root",
+  password: " ",
+  database: "laundr_db"
 });
 
 // Connect to MySQL DB
@@ -26,8 +27,8 @@ connection.connect(function(err) {
 
 // Passport / Facebook Authentication Information
 passport.use(new Strategy({
-  clientID: process.env.CLIENT_ID || "988726484566421",
-  clientSecret: process.env.CLIENT_SECRET || "088c94113e7b633bebdb6947ad2d36ae",
+  clientID: process.env.CLIENT_ID || "1826103597601691",
+  clientSecret: process.env.CLIENT_SECRET || "1c5d8736244d4ecadc89fe7c0384eff0",
   callbackURL: "http://localhost:3002/login/facebook/return"
 },
   function(accessToken, refreshToken, profile, cb) {
@@ -61,14 +62,8 @@ passport.deserializeUser(function(obj, cb) {
 
 
 // Create a new express application.
->>>>>>> master
 var app = express();
- 
 
-<<<<<<< HEAD
- 
-var PORT = process.env.PORT || 8080;
-=======
 // Incorporated a variety of Express packages.
 app.use(require("morgan")("combined"));
 app.use(require("cookie-parser")());
@@ -94,17 +89,14 @@ app.get("/login", function(req, res) {
 });
 
 // Initiate the Facebook Authentication
-app.get("/user", passport.authenticate("facebook"));
-
-// Initiate the Facebook Authentication
-app.get("/washer", passport.authenticate("facebook"));
+app.get("/login/facebook", passport.authenticate("facebook"));
 
 // When Facebook is done, it uses the below route to determine where to go
 app.get("/login/facebook/return",
-  passport.authenticate("facebook", { failureRedirect: "/user" }),
+  passport.authenticate("facebook", { failureRedirect: "/login" }),
 
   function(req, res) {
-    res.redirect("/");
+    res.redirect("/inbox");
   });
 
 // This page is available for viewing a hello message
@@ -123,38 +115,20 @@ app.get("/api/inbox",
 
     var queryString = "SELECT * FROM table_of_users WHERE user_id=" + req.user.id;
     connection.query(queryString, function(err, data) {
+      if (err) throw err;
 
-      if(err) throw err
+      console.log(data);
 
-      if (data.length == 0) { 
+      req.json(data);
 
-        console.log("HEY");
-        // INSERT INTO actors (name, coolness_points, attitude) VALUES ("Jerry", 90, "relaxed")
-        var paramsToInsert = "'" + req.user.id + "'" + "," + "'" + req.user.displayName + "'" + "," + "'" + "You have no mail. You may want to make some friends." + "'"
-        var insertString = "INSERT INTO table_of_users(user_id, name, mail) VALUES (" + paramsToInsert + ")";
+    });
 
-        console.log(insertString);
-        connection.query(insertString, function(err, data){
-
-            if(err) throw err
-        })
->>>>>>> master
-
-app.use(express.static('app/public'));
-
-// parse application/x-www-form-urlencoded 
-app.use(bodyParser.urlencoded({ extended: false }));
- 
-// parse application/json 
-app.use(bodyParser.json());
+  });
 
 
-//require('./app/routing/api-routes.js')(app); 
-
-require ('./app/routing/api-routes.js')(app);
-require('./app/routing/html-routes.js')(app);
-
- 
-app.listen(PORT,function(){
-  console.log("Laundr App is running on Port: "+PORT);
+// Starts the server to begin listening
+// =============================================================
+var PORT = process.env.PORT || 3002;
+app.listen(PORT, function() {
+  console.log("App listening on PORT " + PORT);
 });
